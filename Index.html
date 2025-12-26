@@ -1,0 +1,1408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Le Donna | AI Voice Assistant for Paris Restaurants</title>
+  <meta name="description" content="The AI receptionist that answers tourist calls in 30+ languages, books reservations 24/7, and syncs with your system. Recover €5,000+ monthly in lost bookings.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #000000;
+      color: #ffffff;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+    
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    
+    /* Animations */
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+    
+    @keyframes soundWave {
+      0%, 100% { height: 4px; }
+      50% { height: 20px; }
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .animate-in {
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+    
+    .animate-delay-1 { animation-delay: 0.1s; }
+    .animate-delay-2 { animation-delay: 0.2s; }
+    .animate-delay-3 { animation-delay: 0.3s; }
+    
+    /* Navigation */
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 48px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .nav-logo-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 700;
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+    
+    .nav-logo-text {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+    
+    .nav-logo-sub {
+      font-size: 10px;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+    
+    .nav-link {
+      color: rgba(255,255,255,0.7);
+      font-size: 15px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    
+    .nav-link:hover {
+      color: #ffffff;
+    }
+    
+    /* Buttons */
+    .btn-primary {
+      background: #ffffff;
+      color: #000000;
+      border: none;
+      padding: 14px 24px;
+      font-size: 15px;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .btn-primary:hover {
+      background: rgba(255,255,255,0.9);
+      transform: translateY(-1px);
+    }
+    
+    .btn-secondary {
+      background: rgba(255,255,255,0.08);
+      color: #ffffff;
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 14px 24px;
+      font-size: 15px;
+      font-weight: 500;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.12);
+      border-color: rgba(255,255,255,0.25);
+    }
+    
+    .btn-outline {
+      background: transparent;
+      color: #ffffff;
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 12px 20px;
+      font-size: 14px;
+      font-weight: 500;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .btn-outline:hover {
+      border-color: rgba(255,255,255,0.4);
+      background: rgba(255,255,255,0.05);
+    }
+    
+    /* Cards */
+    .card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      transition: all 0.3s;
+    }
+    
+    .card:hover {
+      background: rgba(255,255,255,0.05);
+      border-color: rgba(255,255,255,0.12);
+    }
+    
+    /* Status dot */
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background: #22c55e;
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    
+    .green-accent {
+      color: #22c55e;
+    }
+    
+    /* Hero Section */
+    .hero {
+      padding: 80px 48px 120px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 50px;
+      padding: 8px 16px;
+      margin-bottom: 32px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+    
+    .hero h1 {
+      font-size: 72px;
+      font-weight: 800;
+      line-height: 0.95;
+      margin-bottom: 32px;
+      letter-spacing: -3px;
+    }
+    
+    .hero h1 .faded {
+      color: rgba(255,255,255,0.4);
+    }
+    
+    .hero-subtext {
+      border-left: 2px solid rgba(255,255,255,0.2);
+      padding-left: 20px;
+      margin-bottom: 40px;
+    }
+    
+    .hero-subtext p {
+      font-size: 18px;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.6;
+      max-width: 480px;
+    }
+    
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 48px;
+    }
+    
+    .hero-stats {
+      display: flex;
+      gap: 48px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .hero-stat-value {
+      font-size: 36px;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+    
+    .hero-stat-label {
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+    }
+    
+    /* Phone Mockup */
+    .phone-mockup {
+      padding: 32px;
+      border-radius: 24px;
+    }
+    
+    .call-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 40px;
+    }
+    
+    .call-info {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    
+    .call-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+    
+    .call-status {
+      font-size: 15px;
+      font-weight: 500;
+    }
+    
+    .call-timer {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+    
+    .sound-wave {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+    
+    .sound-bar {
+      width: 3px;
+      background: #ffffff;
+      border-radius: 2px;
+      animation: soundWave 0.5s ease-in-out infinite;
+    }
+    
+    .conversation {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    
+    .message {
+      padding: 16px 20px;
+      max-width: 85%;
+      font-size: 15px;
+      line-height: 1.5;
+      color: rgba(255,255,255,0.9);
+    }
+    
+    .message-user {
+      background: rgba(255,255,255,0.08);
+      border-radius: 16px;
+      border-top-left-radius: 4px;
+    }
+    
+    .message-ai-wrapper {
+      position: relative;
+      max-width: 85%;
+      margin-left: auto;
+    }
+    
+    .message-ai {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      border-top-right-radius: 4px;
+      padding: 16px 20px;
+      font-size: 15px;
+      line-height: 1.5;
+      color: rgba(255,255,255,0.9);
+    }
+    
+    .booking-badge {
+      position: absolute;
+      bottom: -12px;
+      right: 20px;
+      background: rgba(34, 197, 94, 0.15);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      border-radius: 8px;
+      padding: 8px 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .booking-badge-icon {
+      width: 20px;
+      height: 20px;
+      background: #22c55e;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+    }
+    
+    .booking-badge-text {
+      font-size: 13px;
+      font-weight: 600;
+      color: #22c55e;
+    }
+    
+    .sentiment {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    
+    .sentiment-label {
+      font-size: 11px;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    
+    .sentiment-value {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+      font-size: 14px;
+    }
+    
+    .scroll-indicator {
+      text-align: center;
+      margin-top: 24px;
+      font-size: 11px;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    
+    /* Sections */
+    .section {
+      padding: 100px 48px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .section-alt {
+      background: rgba(255,255,255,0.02);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    
+    .section-header h2 {
+      font-size: 56px;
+      font-weight: 800;
+      letter-spacing: -2px;
+      margin-bottom: 20px;
+    }
+    
+    .section-header p {
+      font-size: 18px;
+      color: rgba(255,255,255,0.5);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    
+    .stat-card {
+      padding: 40px;
+      text-align: center;
+    }
+    
+    .stat-value {
+      font-size: 48px;
+      font-weight: 800;
+      letter-spacing: -2px;
+      margin-bottom: 12px;
+    }
+    
+    .stat-label {
+      font-size: 16px;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 8px;
+    }
+    
+    .stat-sub {
+      font-size: 14px;
+      color: rgba(255,255,255,0.4);
+    }
+    
+    /* Features Grid */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    
+    .feature-card {
+      padding: 32px;
+    }
+    
+    .feature-icon {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+    
+    .feature-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    
+    .feature-desc {
+      font-size: 14px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.6;
+    }
+    
+    /* Process Steps */
+    .process-section {
+      max-width: 1000px;
+    }
+    
+    .process-step {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 32px;
+      padding: 36px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      align-items: center;
+    }
+    
+    .process-step:last-child {
+      border-bottom: none;
+    }
+    
+    .process-num {
+      font-size: 40px;
+      font-weight: 800;
+      color: rgba(255,255,255,0.15);
+      letter-spacing: -2px;
+    }
+    
+    .process-title {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    
+    .process-desc {
+      font-size: 15px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.6;
+    }
+    
+    /* Testimonials */
+    .testimonial-section {
+      max-width: 900px;
+    }
+    
+    .testimonial-card {
+      padding: 60px 50px;
+      position: relative;
+      min-height: 260px;
+      border-radius: 20px;
+    }
+    
+    .testimonial-quote-mark {
+      font-size: 64px;
+      position: absolute;
+      top: 24px;
+      left: 36px;
+      color: rgba(255,255,255,0.08);
+      font-family: serif;
+    }
+    
+    .testimonial-content {
+      text-align: center;
+      padding-top: 20px;
+    }
+    
+    .testimonial-text {
+      font-size: 20px;
+      line-height: 1.7;
+      margin-bottom: 28px;
+      color: rgba(255,255,255,0.9);
+    }
+    
+    .testimonial-author {
+      font-weight: 700;
+      font-size: 15px;
+    }
+    
+    .testimonial-role {
+      color: rgba(255,255,255,0.4);
+      font-size: 14px;
+    }
+    
+    .testimonial-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 30px;
+    }
+    
+    .testimonial-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    
+    .testimonial-dot.active {
+      background: #22c55e;
+    }
+    
+    /* Pricing */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+    
+    .pricing-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 40px 32px;
+    }
+    
+    .pricing-card.featured {
+      border: 2px solid rgba(255,255,255,0.9);
+      position: relative;
+    }
+    
+    .pricing-badge {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #000;
+      border: 1.5px solid rgba(255,255,255,0.9);
+      color: #fff;
+      padding: 6px 20px;
+      border-radius: 50px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    
+    .pricing-tier {
+      font-size: 16px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 16px;
+    }
+    
+    .pricing-price {
+      margin-bottom: 8px;
+    }
+    
+    .pricing-currency {
+      font-size: 16px;
+      color: rgba(255,255,255,0.5);
+      vertical-align: top;
+      margin-right: 2px;
+    }
+    
+    .pricing-amount {
+      font-size: 64px;
+      font-weight: 700;
+      letter-spacing: -3px;
+      line-height: 1;
+    }
+    
+    .pricing-period {
+      font-size: 16px;
+      color: rgba(255,255,255,0.5);
+    }
+    
+    .pricing-desc {
+      font-size: 15px;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 32px;
+    }
+    
+    .pricing-features {
+      list-style: none;
+      margin-bottom: 32px;
+    }
+    
+    .pricing-feature {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      font-size: 15px;
+      color: rgba(255,255,255,0.8);
+    }
+    
+    .pricing-check {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(255,255,255,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    
+    .pricing-btn {
+      width: 100%;
+      padding: 16px 24px;
+      font-size: 15px;
+      font-weight: 600;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .pricing-btn-secondary {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: #ffffff;
+    }
+    
+    .pricing-btn-primary {
+      background: #ffffff;
+      border: none;
+      color: #000000;
+    }
+    
+    .pricing-note {
+      text-align: center;
+      margin-top: 32px;
+      color: rgba(255,255,255,0.4);
+      font-size: 14px;
+    }
+    
+    /* CTA Section */
+    .cta-section {
+      padding: 120px 48px;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    
+    .cta-content {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    .cta-content h2 {
+      font-size: 56px;
+      font-weight: 800;
+      letter-spacing: -2px;
+      margin-bottom: 24px;
+    }
+    
+    .cta-content p {
+      font-size: 18px;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+    
+    .cta-buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+    }
+    
+    .cta-trust {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-top: 48px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.3);
+    }
+    
+    /* Footer */
+    .footer {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 60px 48px 40px;
+    }
+    
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 60px;
+    }
+    
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    
+    .footer-logo-icon {
+      width: 36px;
+      height: 36px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+    }
+    
+    .footer-logo-text {
+      font-size: 16px;
+      font-weight: 700;
+    }
+    
+    .footer-desc {
+      font-size: 14px;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.7;
+      max-width: 280px;
+    }
+    
+    .footer-heading {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 0.5px;
+    }
+    
+    .footer-links {
+      list-style: none;
+    }
+    
+    .footer-link {
+      margin-bottom: 12px;
+    }
+    
+    .footer-link a {
+      color: rgba(255,255,255,0.4);
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+    
+    .footer-link a:hover {
+      color: rgba(255,255,255,0.7);
+    }
+    
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 40px auto 0;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      text-align: center;
+      font-size: 13px;
+      color: rgba(255,255,255,0.25);
+    }
+    
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 60px;
+        padding: 60px 24px 80px;
+      }
+      
+      .hero h1 {
+        font-size: 48px;
+      }
+      
+      .nav {
+        padding: 16px 24px;
+      }
+      
+      .nav-links {
+        display: none;
+      }
+      
+      .stats-grid,
+      .features-grid,
+      .pricing-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      
+      .section {
+        padding: 60px 24px;
+      }
+      
+      .section-header h2 {
+        font-size: 36px;
+      }
+      
+      .footer-content {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-logo">
+      <div class="nav-logo-icon">D</div>
+      <div>
+        <div class="nav-logo-text">Le Donna</div>
+        <div class="nav-logo-sub">AI Voice Assistant</div>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="#proof" class="nav-link">Audio Proof</a>
+      <a href="#problem" class="nav-link">Problem</a>
+      <a href="#methodology" class="nav-link">Methodology</a>
+      <a href="#use-cases" class="nav-link">Use Cases</a>
+      <a href="#pricing" class="nav-link">Pricing</a>
+      <button class="btn-outline">Book Demo</button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="animate-in">
+      <div class="hero-badge">
+        <div class="status-dot"></div>
+        <span>System Operational 24/7</span>
+      </div>
+      
+      <h1>
+        Stop Losing<br>
+        Revenue<br>
+        <span class="faded">to Language</span><br>
+        <span class="faded">Barriers</span>
+      </h1>
+      
+      <div class="hero-subtext">
+        <p>
+          The AI receptionist that answers tourist calls in <strong style="color:#fff">30+ languages</strong>, 
+          books reservations 24/7, and syncs with your system. Sounds 100% human. 
+          <span class="green-accent" style="font-weight:600">Recovers €5,000+ monthly.</span>
+        </p>
+      </div>
+      
+      <div class="hero-buttons">
+        <button class="btn-primary">
+          <span>▶</span>
+          Hear a Live Demo
+        </button>
+        <button class="btn-secondary">View Pricing</button>
+      </div>
+      
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-value">95%</div>
+          <div class="hero-stat-label">Call Completion</div>
+        </div>
+        <div>
+          <div class="hero-stat-value">30+</div>
+          <div class="hero-stat-label">Languages</div>
+        </div>
+        <div>
+          <div class="hero-stat-value">€8k</div>
+          <div class="hero-stat-label">Avg. Monthly Recovery</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="animate-in animate-delay-2">
+      <div class="card phone-mockup">
+        <div class="call-header">
+          <div class="call-info">
+            <div class="call-icon">🎙️</div>
+            <div>
+              <div class="call-status">Active Call</div>
+              <div class="call-timer" id="timer">00:42</div>
+            </div>
+          </div>
+          <div class="sound-wave">
+            <div class="sound-bar" style="height:12px;animation-delay:0s"></div>
+            <div class="sound-bar" style="height:20px;animation-delay:0.1s"></div>
+            <div class="sound-bar" style="height:8px;animation-delay:0.2s"></div>
+            <div class="sound-bar" style="height:16px;animation-delay:0.3s"></div>
+            <div class="sound-bar" style="height:10px;animation-delay:0.4s"></div>
+          </div>
+        </div>
+        
+        <div class="conversation">
+          <div class="message message-user">
+            "Hi, I'd like to book a table for 4 tomorrow evening, around 8pm? We're visiting from London."
+          </div>
+          <div class="message-ai-wrapper">
+            <div class="message-ai">
+              "Perfect! I have a lovely table available at 8pm tomorrow. May I have your name for the reservation?"
+            </div>
+            <div class="booking-badge">
+              <div class="booking-badge-icon">✓</div>
+              <span class="booking-badge-text">Booking Confirmed</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="sentiment">
+          <div class="sentiment-label">Sentiment Analysis</div>
+          <div class="sentiment-value">
+            <span>📈</span>
+            <span class="green-accent">Positive (98%)</span>
+          </div>
+        </div>
+      </div>
+      <div class="scroll-indicator">Scroll</div>
+    </div>
+  </section>
+
+  <!-- Problem Section -->
+  <section id="problem" class="section">
+    <div class="section-header">
+      <h2>The <span class="faded">Language Gap</span> Problem</h2>
+      <p>38 million tourists visit Paris annually. When they call in English, what happens at your restaurant?</p>
+    </div>
+    
+    <div class="stats-grid">
+      <div class="card stat-card">
+        <div class="stat-value">40%</div>
+        <div class="stat-label">of tourist calls abandoned</div>
+        <div class="stat-sub">Staff can't communicate</div>
+      </div>
+      <div class="card stat-card">
+        <div class="stat-value">€85</div>
+        <div class="stat-label">average tourist dinner spend</div>
+        <div class="stat-sub">Per person in Paris</div>
+      </div>
+      <div class="card stat-card">
+        <div class="stat-value">€5,000+</div>
+        <div class="stat-label">lost revenue monthly</div>
+        <div class="stat-sub">From missed international bookings</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="methodology" class="section-alt">
+    <div class="section" style="padding-top:100px;padding-bottom:100px;">
+      <div class="section-header">
+        <h2>How <span class="green-accent">Donna</span> Works</h2>
+        <p>Your 24/7 multilingual maître d' who never takes a day off</p>
+      </div>
+      
+      <div class="features-grid">
+        <div class="card feature-card">
+          <div class="feature-icon">🌍</div>
+          <div class="feature-title">30+ Languages</div>
+          <div class="feature-desc">English, Spanish, German, Mandarin, Japanese, and more</div>
+        </div>
+        <div class="card feature-card">
+          <div class="feature-icon">📞</div>
+          <div class="feature-title">24/7 Availability</div>
+          <div class="feature-desc">Never miss a call, day or night, holidays included</div>
+        </div>
+        <div class="card feature-card">
+          <div class="feature-icon">📅</div>
+          <div class="feature-title">Instant Booking</div>
+          <div class="feature-desc">Syncs directly with TheFork, Zenchef, or your system</div>
+        </div>
+        <div class="card feature-card">
+          <div class="feature-icon">🎙️</div>
+          <div class="feature-title">100% Human Voice</div>
+          <div class="feature-desc">Callers can't tell they're talking to AI</div>
+        </div>
+        <div class="card feature-card">
+          <div class="feature-icon">📊</div>
+          <div class="feature-title">Sentiment Analysis</div>
+          <div class="feature-desc">Track caller satisfaction in real-time</div>
+        </div>
+        <div class="card feature-card">
+          <div class="feature-icon">⚡</div>
+          <div class="feature-title">48h Setup</div>
+          <div class="feature-desc">Go live in two days, not two months</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="section process-section" style="margin:0 auto;">
+    <div class="section-header">
+      <h2>Simple <span class="faded">4-Step</span> Process</h2>
+    </div>
+    
+    <div class="process-step">
+      <div class="process-num">01</div>
+      <div>
+        <div class="process-title">The Phone Rings</div>
+        <div class="process-desc">A British tourist calls your restaurant while you're prepping for dinner service.</div>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="process-num">02</div>
+      <div>
+        <div class="process-title">Donna Answers</div>
+        <div class="process-desc">In perfect English, she greets them warmly with your restaurant's name and personality.</div>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="process-num">03</div>
+      <div>
+        <div class="process-title">She Handles Everything</div>
+        <div class="process-desc">Takes reservations, answers menu questions, confirms dietary needs, provides directions.</div>
+      </div>
+    </div>
+    <div class="process-step" style="border-bottom:none;">
+      <div class="process-num">04</div>
+      <div>
+        <div class="process-title">You Get the Booking</div>
+        <div class="process-desc">The reservation syncs to your system. The guest arrives. You make money.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="use-cases" class="section-alt">
+    <div class="section testimonial-section" style="margin:0 auto;padding-top:100px;padding-bottom:100px;">
+      <div class="section-header">
+        <h2>Trusted by <span class="green-accent">200+</span> Paris Restaurants</h2>
+      </div>
+      
+      <div class="card testimonial-card">
+        <div class="testimonial-quote-mark">"</div>
+        <div class="testimonial-content" id="testimonial-content">
+          <div class="testimonial-text">"We recovered €8,000 in tourist reservations last month alone. Donna handles English calls perfectly."</div>
+          <div class="testimonial-author">Olivier M.</div>
+          <div class="testimonial-role">Bistro Owner, 6ème arrondissement</div>
+        </div>
+        <div class="testimonial-dots">
+          <button class="testimonial-dot active" onclick="showTestimonial(0)"></button>
+          <button class="testimonial-dot" onclick="showTestimonial(1)"></button>
+          <button class="testimonial-dot" onclick="showTestimonial(2)"></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section id="pricing" class="section">
+    <div class="section-header">
+      <h2>Simple <span class="faded">Pricing</span></h2>
+      <p>Donna pays for herself with just 3-4 extra reservations per week</p>
+    </div>
+    
+    <div class="pricing-grid">
+      <!-- Starter -->
+      <div class="pricing-card">
+        <div class="pricing-tier">Starter</div>
+        <div class="pricing-price">
+          <span class="pricing-currency">$</span>
+          <span class="pricing-amount">200</span>
+          <span class="pricing-period">/mo</span>
+        </div>
+        <div class="pricing-desc">For local businesses</div>
+        <ul class="pricing-features">
+          <li class="pricing-feature">
+            <div class="pricing-check">
+              <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                <path d="M1 4L3.5 6.5L9 1" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            400 AI Minutes ($0.50/min)
+          </li>
+          <li class="pricing-feature">
+            <div class="pricing-check">
+              <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                <path d="M1 4L3.5 6.5L9 1" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            Standard Voice
+          </li>
+          <li class="pricing-feature">
+            <div class="pricing-check">
+              <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                <path d="M1 4L3.5 6.5L9 1" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            Email Analytics
+          </li>
+        </ul>
+        <button class="pricing-btn pricing-btn-secondary">Book Onboarding Call</button>
+      </div>
+      
+      <!-- Growth - Featured -->
+      <div class="pricing-card featured">
+        <div class="pricing-badge">Best Value</div>
+        <div class="pricing-tier">Growth</div>
+        <div class="pricing-price">
+          <span class="pricing-currency">$</span>
+          <span class="pricing-amount">500</span>
+          <span class="pricing-period">/mo</span>
+        </div>
+        <div class="pricing-desc">For scaling teams</div>
+        <ul class="pricing-features">
+          <li class="pricing-feature">
+            <div class="pricing-check">
+              <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                <path d="M1 4L3.5 6.5L9 1" stroke="rgba(255,255,255,0.7)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            1,200 AI Minutes
+          </li>
+          <li class="pricing-feature">
+            <div class="pricing-check">
+              <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                <path d="M1 4L3.5 6.5L9 1" stroke="rgba(255,255,255,0.7)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            Custom Workflows
+          </li>
+          <li class="pricing-feature">
+            <div class="pricing-check">
+              <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                <path d="M1 4L3.5 6.5L9 1" stroke="rgba(255,255,255,0.7)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            CRM Integration
+          </li>
+          <li class="pricing-feature">
+            <div class="pricing-check">
+              <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                <path d="M1 4L3.5 6.5L9 1" stroke="rgba(255,255,255,0.7)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            24/7 Support
+          </li>
+        </ul>
+        <button class="pricing-btn pricing-btn-primary">Book Onboarding Call</button>
+      </div>
+      
+      <!-- Enterprise -->
+      <div class="pricing-card">
+        <div class="pricing-tier">Enterprise</div>
+        <div class="pricing-price">
+          <span class="pricing-amount">Custom</span>
+        </div>
+        <div class="pricing-desc">For organizations</div>
+        <ul class="pricing-features">
+          <li class="pricing-feature">
+            <div class="pricing-check">
+              <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                <path d="M1 4L3.5 6.5L9 1" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            Unlimited Volume
+          </li>
+          <li class="pricing-feature">
+            <div class="pricing-check">
+              <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                <path d="M1 4L3.5 6.5L9 1" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            Dedicated Instance
+          </li>
+          <li class="pricing-feature">
+            <div class="pricing-check">
+              <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                <path d="M1 4L3.5 6.5L9 1" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            SLA Guarantees
+          </li>
+          <li class="pricing-feature">
+            <div class="pricing-check">
+              <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                <path d="M1 4L3.5 6.5L9 1" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            API Access
+          </li>
+        </ul>
+        <button class="pricing-btn pricing-btn-secondary">Contact Sales</button>
+      </div>
+    </div>
+    
+    <p class="pricing-note">All plans include 14-day free trial • No credit card required • Cancel anytime</p>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="cta-content">
+      <h2>Ready to Stop<br><span class="faded">Losing Revenue?</span></h2>
+      <p>Join 200+ Parisian restaurants already using Donna to capture every international booking.</p>
+      <div class="cta-buttons">
+        <button class="btn-primary" style="padding:18px 32px;font-size:16px;">
+          <span>▶</span>
+          Hear a Live Demo
+        </button>
+        <button class="btn-secondary" style="padding:18px 32px;font-size:16px;">
+          Book a Demo Call
+        </button>
+      </div>
+      <div class="cta-trust">
+        <span>🔒 GDPR Compliant</span>
+        <span>🇫🇷 Made for French Hospitality</span>
+        <span class="green-accent">● System Operational</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div>
+        <div class="footer-logo">
+          <div class="footer-logo-icon">D</div>
+          <span class="footer-logo-text">Le Donna</span>
+        </div>
+        <p class="footer-desc">AI-powered voice assistant helping Parisian restaurants capture every international booking.</p>
+      </div>
+      <div>
+        <div class="footer-heading">Product</div>
+        <ul class="footer-links">
+          <li class="footer-link"><a href="#">Features</a></li>
+          <li class="footer-link"><a href="#">Pricing</a></li>
+          <li class="footer-link"><a href="#">Demo</a></li>
+          <li class="footer-link"><a href="#">Integrations</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Company</div>
+        <ul class="footer-links">
+          <li class="footer-link"><a href="#">About</a></li>
+          <li class="footer-link"><a href="#">Blog</a></li>
+          <li class="footer-link"><a href="#">Careers</a></li>
+          <li class="footer-link"><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Legal</div>
+        <ul class="footer-links">
+          <li class="footer-link"><a href="#">Privacy</a></li>
+          <li class="footer-link"><a href="#">Terms</a></li>
+          <li class="footer-link"><a href="#">GDPR</a></li>
+          <li class="footer-link"><a href="#">Cookies</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2025 Le Donna. All rights reserved. Made with ❤️ in Paris.
+    </div>
+  </footer>
+
+  <script>
+    // Timer
+    let seconds = 42;
+    setInterval(() => {
+      seconds++;
+      const mins = Math.floor(seconds / 60).toString().padStart(2, '0');
+      const secs = (seconds % 60).toString().padStart(2, '0');
+      document.getElementById('timer').textContent = `${mins}:${secs}`;
+    }, 1000);
+
+    // Testimonials
+    const testimonials = [
+      {
+        text: '"We recovered €8,000 in tourist reservations last month alone. Donna handles English calls perfectly."',
+        author: 'Olivier M.',
+        role: 'Bistro Owner, 6ème arrondissement'
+      },
+      {
+        text: '"A Japanese tour group booked for 12 people. Before Donna, we would have lost them. They spent €1,400."',
+        author: 'Thomas R.',
+        role: 'Brasserie Owner, Opéra'
+      },
+      {
+        text: '"My staff used to dread the phone. Now they just see bookings appear. It\'s transformed our service."',
+        author: 'Marie-Claire D.',
+        role: 'Restaurant Manager, Saint-Germain'
+      }
+    ];
+
+    let currentTestimonial = 0;
+
+    function showTestimonial(index) {
+      currentTestimonial = index;
+      const content = document.getElementById('testimonial-content');
+      const t = testimonials[index];
+      content.innerHTML = `
+        <div class="testimonial-text">${t.text}</div>
+        <div class="testimonial-author">${t.author}</div>
+        <div class="testimonial-role">${t.role}</div>
+      `;
+      document.querySelectorAll('.testimonial-dot').forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+      });
+    }
+
+    // Auto-rotate testimonials
+    setInterval(() => {
+      currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+      showTestimonial(currentTestimonial);
+    }, 5000);
+  </script>
+</body>
+</html>
