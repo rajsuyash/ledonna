@@ -116,7 +116,38 @@
     .nav-link:hover {
       color: #ffffff;
     }
-    
+
+    /* Language Toggle */
+    .language-toggle {
+      display: flex;
+      gap: 4px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 8px;
+      padding: 4px;
+    }
+
+    .lang-btn {
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 600;
+      border: none;
+      background: transparent;
+      color: rgba(255,255,255,0.6);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .lang-btn:hover {
+      color: rgba(255,255,255,0.9);
+    }
+
+    .lang-btn.active {
+      background: rgba(255,255,255,0.15);
+      color: #ffffff;
+    }
+
     /* Buttons */
     .btn-primary {
       background: #ffffff;
@@ -917,12 +948,16 @@
       </div>
     </div>
     <div class="nav-links">
-      <a href="#proof" class="nav-link">Audio Proof</a>
-      <a href="#problem" class="nav-link">Problem</a>
-      <a href="#methodology" class="nav-link">Methodology</a>
-      <a href="#use-cases" class="nav-link">Use Cases</a>
-      <a href="#pricing" class="nav-link">Pricing</a>
-      <button class="btn-outline">Book Demo</button>
+      <a href="#proof" class="nav-link" data-translate="navAudioProof">Audio Proof</a>
+      <a href="#problem" class="nav-link" data-translate="navProblem">Problem</a>
+      <a href="#methodology" class="nav-link" data-translate="navMethodology">Methodology</a>
+      <a href="#use-cases" class="nav-link" data-translate="navUseCases">Use Cases</a>
+      <a href="#pricing" class="nav-link" data-translate="navPricing">Pricing</a>
+      <div class="language-toggle">
+        <button class="lang-btn active" onclick="setLanguage('en')" id="lang-en">EN</button>
+        <button class="lang-btn" onclick="setLanguage('fr')" id="lang-fr">FR</button>
+      </div>
+      <button class="btn-outline" data-translate="navBookDemo">Book Demo</button>
     </div>
   </nav>
 
@@ -931,44 +966,44 @@
     <div class="animate-in">
       <div class="hero-badge">
         <div class="status-dot"></div>
-        <span>System Operational 24/7</span>
+        <span data-translate="heroStatus">System Operational 24/7</span>
       </div>
-      
+
       <h1>
-        Stop Losing<br>
-        Revenue<br>
-        <span class="faded">to Language</span><br>
-        <span class="faded">Barriers</span>
+        <span data-translate="heroTitle1">Stop Losing</span><br>
+        <span data-translate="heroTitle2">Revenue</span><br>
+        <span class="faded" data-translate="heroTitle3">to Language</span><br>
+        <span class="faded" data-translate="heroTitle4">Barriers</span>
       </h1>
-      
+
       <div class="hero-subtext">
-        <p>
-          The AI receptionist that answers tourist calls in <strong style="color:#fff">30+ languages</strong>, 
-          books reservations 24/7, and syncs with your system. Sounds 100% human. 
+        <p data-translate="heroSubtext">
+          The AI receptionist that answers tourist calls in <strong style="color:#fff">30+ languages</strong>,
+          books reservations 24/7, and syncs with your system. Sounds 100% human.
           <span class="green-accent" style="font-weight:600">Recovers €5,000+ monthly.</span>
         </p>
       </div>
-      
+
       <div class="hero-buttons">
         <button class="btn-primary">
           <span>▶</span>
-          Hear a Live Demo
+          <span data-translate="heroBtnDemo">Hear a Live Demo</span>
         </button>
-        <button class="btn-secondary">View Pricing</button>
+        <button class="btn-secondary" data-translate="heroBtnPricing">View Pricing</button>
       </div>
-      
+
       <div class="hero-stats">
         <div>
-          <div class="hero-stat-value">95%</div>
-          <div class="hero-stat-label">Call Completion</div>
+          <div class="hero-stat-value" data-translate="heroStat1">95%</div>
+          <div class="hero-stat-label" data-translate="heroStat1Label">Call Completion</div>
         </div>
         <div>
-          <div class="hero-stat-value">30+</div>
-          <div class="hero-stat-label">Languages</div>
+          <div class="hero-stat-value" data-translate="heroStat2">30+</div>
+          <div class="hero-stat-label" data-translate="heroStat2Label">Languages</div>
         </div>
         <div>
-          <div class="hero-stat-value">€8k</div>
-          <div class="hero-stat-label">Avg. Monthly Recovery</div>
+          <div class="hero-stat-value" data-translate="heroStat3">€8k</div>
+          <div class="hero-stat-label" data-translate="heroStat3Label">Avg. Monthly Recovery</div>
         </div>
       </div>
     </div>
@@ -979,7 +1014,7 @@
           <div class="call-info">
             <div class="call-icon">🎙️</div>
             <div>
-              <div class="call-status">Active Call</div>
+              <div class="call-status" data-translate="activeCall">Active Call</div>
               <div class="call-timer" id="timer">00:42</div>
             </div>
           </div>
@@ -991,56 +1026,56 @@
             <div class="sound-bar" style="height:10px;animation-delay:0.4s"></div>
           </div>
         </div>
-        
+
         <div class="conversation">
-          <div class="message message-user">
+          <div class="message message-user" data-translate="callMessage1">
             "Hi, I'd like to book a table for 4 tomorrow evening, around 8pm? We're visiting from London."
           </div>
           <div class="message-ai-wrapper">
-            <div class="message-ai">
+            <div class="message-ai" data-translate="callMessage2">
               "Perfect! I have a lovely table available at 8pm tomorrow. May I have your name for the reservation?"
             </div>
             <div class="booking-badge">
               <div class="booking-badge-icon">✓</div>
-              <span class="booking-badge-text">Booking Confirmed</span>
+              <span class="booking-badge-text" data-translate="bookingConfirmed">Booking Confirmed</span>
             </div>
           </div>
         </div>
-        
+
         <div class="sentiment">
-          <div class="sentiment-label">Sentiment Analysis</div>
+          <div class="sentiment-label" data-translate="sentimentLabel">Sentiment Analysis</div>
           <div class="sentiment-value">
             <span>📈</span>
-            <span class="green-accent">Positive (98%)</span>
+            <span class="green-accent" data-translate="sentimentValue">Positive (98%)</span>
           </div>
         </div>
       </div>
-      <div class="scroll-indicator">Scroll</div>
+      <div class="scroll-indicator" data-translate="scrollText">Scroll</div>
     </div>
   </section>
 
   <!-- Problem Section -->
   <section id="problem" class="section">
     <div class="section-header">
-      <h2>The <span class="faded">Language Gap</span> Problem</h2>
-      <p>38 million tourists visit Paris annually. When they call in English, what happens at your restaurant?</p>
+      <h2 data-translate="problemTitle">The <span class="faded">Language Gap</span> Problem</h2>
+      <p data-translate="problemSubtext">38 million tourists visit Paris annually. When they call in English, what happens at your restaurant?</p>
     </div>
-    
+
     <div class="stats-grid">
       <div class="card stat-card">
-        <div class="stat-value">40%</div>
-        <div class="stat-label">of tourist calls abandoned</div>
-        <div class="stat-sub">Staff can't communicate</div>
+        <div class="stat-value" data-translate="stat1Value">40%</div>
+        <div class="stat-label" data-translate="stat1Label">of tourist calls abandoned</div>
+        <div class="stat-sub" data-translate="stat1Sub">Staff can't communicate</div>
       </div>
       <div class="card stat-card">
-        <div class="stat-value">€85</div>
-        <div class="stat-label">average tourist dinner spend</div>
-        <div class="stat-sub">Per person in Paris</div>
+        <div class="stat-value" data-translate="stat2Value">€85</div>
+        <div class="stat-label" data-translate="stat2Label">average tourist dinner spend</div>
+        <div class="stat-sub" data-translate="stat2Sub">Per person in Paris</div>
       </div>
       <div class="card stat-card">
-        <div class="stat-value">€5,000+</div>
-        <div class="stat-label">lost revenue monthly</div>
-        <div class="stat-sub">From missed international bookings</div>
+        <div class="stat-value" data-translate="stat3Value">€5,000+</div>
+        <div class="stat-label" data-translate="stat3Label">lost revenue monthly</div>
+        <div class="stat-sub" data-translate="stat3Sub">From missed international bookings</div>
       </div>
     </div>
   </section>
@@ -1049,40 +1084,40 @@
   <section id="methodology" class="section-alt">
     <div class="section" style="padding-top:100px;padding-bottom:100px;">
       <div class="section-header">
-        <h2>How <span class="green-accent">Donna</span> Works</h2>
-        <p>Your 24/7 multilingual maître d' who never takes a day off</p>
+        <h2 data-translate="featuresTitle">How <span class="green-accent">Donna</span> Works</h2>
+        <p data-translate="featuresSubtext">Your 24/7 multilingual maître d' who never takes a day off</p>
       </div>
-      
+
       <div class="features-grid">
         <div class="card feature-card">
           <div class="feature-icon">🌍</div>
-          <div class="feature-title">30+ Languages</div>
-          <div class="feature-desc">English, Spanish, German, Mandarin, Japanese, and more</div>
+          <div class="feature-title" data-translate="feature1Title">30+ Languages</div>
+          <div class="feature-desc" data-translate="feature1Desc">English, Spanish, German, Mandarin, Japanese, and more</div>
         </div>
         <div class="card feature-card">
           <div class="feature-icon">📞</div>
-          <div class="feature-title">24/7 Availability</div>
-          <div class="feature-desc">Never miss a call, day or night, holidays included</div>
+          <div class="feature-title" data-translate="feature2Title">24/7 Availability</div>
+          <div class="feature-desc" data-translate="feature2Desc">Never miss a call, day or night, holidays included</div>
         </div>
         <div class="card feature-card">
           <div class="feature-icon">📅</div>
-          <div class="feature-title">Instant Booking</div>
-          <div class="feature-desc">Syncs directly with TheFork, Zenchef, or your system</div>
+          <div class="feature-title" data-translate="feature3Title">Instant Booking</div>
+          <div class="feature-desc" data-translate="feature3Desc">Syncs directly with TheFork, Zenchef, or your system</div>
         </div>
         <div class="card feature-card">
           <div class="feature-icon">🎙️</div>
-          <div class="feature-title">100% Human Voice</div>
-          <div class="feature-desc">Callers can't tell they're talking to AI</div>
+          <div class="feature-title" data-translate="feature4Title">100% Human Voice</div>
+          <div class="feature-desc" data-translate="feature4Desc">Callers can't tell they're talking to AI</div>
         </div>
         <div class="card feature-card">
           <div class="feature-icon">📊</div>
-          <div class="feature-title">Sentiment Analysis</div>
-          <div class="feature-desc">Track caller satisfaction in real-time</div>
+          <div class="feature-title" data-translate="feature5Title">Sentiment Analysis</div>
+          <div class="feature-desc" data-translate="feature5Desc">Track caller satisfaction in real-time</div>
         </div>
         <div class="card feature-card">
           <div class="feature-icon">⚡</div>
-          <div class="feature-title">48h Setup</div>
-          <div class="feature-desc">Go live in two days, not two months</div>
+          <div class="feature-title" data-translate="feature6Title">48h Setup</div>
+          <div class="feature-desc" data-translate="feature6Desc">Go live in two days, not two months</div>
         </div>
       </div>
     </div>
@@ -1091,35 +1126,35 @@
   <!-- Process Section -->
   <section class="section process-section" style="margin:0 auto;">
     <div class="section-header">
-      <h2>Simple <span class="faded">4-Step</span> Process</h2>
+      <h2 data-translate="processTitle">Simple <span class="faded">4-Step</span> Process</h2>
     </div>
-    
+
     <div class="process-step">
       <div class="process-num">01</div>
       <div>
-        <div class="process-title">The Phone Rings</div>
-        <div class="process-desc">A British tourist calls your restaurant while you're prepping for dinner service.</div>
+        <div class="process-title" data-translate="process1Title">The Phone Rings</div>
+        <div class="process-desc" data-translate="process1Desc">A British tourist calls your restaurant while you're prepping for dinner service.</div>
       </div>
     </div>
     <div class="process-step">
       <div class="process-num">02</div>
       <div>
-        <div class="process-title">Donna Answers</div>
-        <div class="process-desc">In perfect English, she greets them warmly with your restaurant's name and personality.</div>
+        <div class="process-title" data-translate="process2Title">Donna Answers</div>
+        <div class="process-desc" data-translate="process2Desc">In perfect English, she greets them warmly with your restaurant's name and personality.</div>
       </div>
     </div>
     <div class="process-step">
       <div class="process-num">03</div>
       <div>
-        <div class="process-title">She Handles Everything</div>
-        <div class="process-desc">Takes reservations, answers menu questions, confirms dietary needs, provides directions.</div>
+        <div class="process-title" data-translate="process3Title">She Handles Everything</div>
+        <div class="process-desc" data-translate="process3Desc">Takes reservations, answers menu questions, confirms dietary needs, provides directions.</div>
       </div>
     </div>
     <div class="process-step" style="border-bottom:none;">
       <div class="process-num">04</div>
       <div>
-        <div class="process-title">You Get the Booking</div>
-        <div class="process-desc">The reservation syncs to your system. The guest arrives. You make money.</div>
+        <div class="process-title" data-translate="process4Title">You Get the Booking</div>
+        <div class="process-desc" data-translate="process4Desc">The reservation syncs to your system. The guest arrives. You make money.</div>
       </div>
     </div>
   </section>
@@ -1128,7 +1163,7 @@
   <section id="use-cases" class="section-alt">
     <div class="section testimonial-section" style="margin:0 auto;padding-top:100px;padding-bottom:100px;">
       <div class="section-header">
-        <h2>Trusted by <span class="green-accent">200+</span> Paris Restaurants</h2>
+        <h2 data-translate="testimonialTitle">Trusted by <span class="green-accent">200+</span> Paris Restaurants</h2>
       </div>
       
       <div class="card testimonial-card">
@@ -1150,20 +1185,20 @@
   <!-- Pricing Section -->
   <section id="pricing" class="section">
     <div class="section-header">
-      <h2>Simple <span class="faded">Pricing</span></h2>
-      <p>Donna pays for herself with just 3-4 extra reservations per week</p>
+      <h2 data-translate="pricingTitle">Simple <span class="faded">Pricing</span></h2>
+      <p data-translate="pricingSubtext">Donna pays for herself with just 3-4 extra reservations per week</p>
     </div>
-    
+
     <div class="pricing-grid">
       <!-- Starter -->
       <div class="pricing-card">
-        <div class="pricing-tier">Starter</div>
+        <div class="pricing-tier" data-translate="pricingStarter">Starter</div>
         <div class="pricing-price">
           <span class="pricing-currency">$</span>
           <span class="pricing-amount">200</span>
           <span class="pricing-period">/mo</span>
         </div>
-        <div class="pricing-desc">For local businesses</div>
+        <div class="pricing-desc" data-translate="pricingStarterDesc">For local businesses</div>
         <ul class="pricing-features">
           <li class="pricing-feature">
             <div class="pricing-check">
@@ -1190,19 +1225,19 @@
             Email Analytics
           </li>
         </ul>
-        <button class="pricing-btn pricing-btn-secondary">Book Onboarding Call</button>
+        <button class="pricing-btn pricing-btn-secondary" data-translate="pricingBtn">Book Onboarding Call</button>
       </div>
-      
+
       <!-- Growth - Featured -->
       <div class="pricing-card featured">
-        <div class="pricing-badge">Best Value</div>
-        <div class="pricing-tier">Growth</div>
+        <div class="pricing-badge" data-translate="pricingBadge">Best Value</div>
+        <div class="pricing-tier" data-translate="pricingGrowth">Growth</div>
         <div class="pricing-price">
           <span class="pricing-currency">$</span>
           <span class="pricing-amount">500</span>
           <span class="pricing-period">/mo</span>
         </div>
-        <div class="pricing-desc">For scaling teams</div>
+        <div class="pricing-desc" data-translate="pricingGrowthDesc">For scaling teams</div>
         <ul class="pricing-features">
           <li class="pricing-feature">
             <div class="pricing-check">
@@ -1237,16 +1272,16 @@
             24/7 Support
           </li>
         </ul>
-        <button class="pricing-btn pricing-btn-primary">Book Onboarding Call</button>
+        <button class="pricing-btn pricing-btn-primary" data-translate="pricingBtn">Book Onboarding Call</button>
       </div>
-      
+
       <!-- Enterprise -->
       <div class="pricing-card">
-        <div class="pricing-tier">Enterprise</div>
+        <div class="pricing-tier" data-translate="pricingEnterprise">Enterprise</div>
         <div class="pricing-price">
           <span class="pricing-amount">Custom</span>
         </div>
-        <div class="pricing-desc">For organizations</div>
+        <div class="pricing-desc" data-translate="pricingEnterpriseDesc">For organizations</div>
         <ul class="pricing-features">
           <li class="pricing-feature">
             <div class="pricing-check">
@@ -1281,31 +1316,31 @@
             API Access
           </li>
         </ul>
-        <button class="pricing-btn pricing-btn-secondary">Contact Sales</button>
+        <button class="pricing-btn pricing-btn-secondary" data-translate="pricingBtnContact">Contact Sales</button>
       </div>
     </div>
-    
-    <p class="pricing-note">All plans include 14-day free trial • No credit card required • Cancel anytime</p>
+
+    <p class="pricing-note" data-translate="pricingNote">All plans include 14-day free trial • No credit card required • Cancel anytime</p>
   </section>
 
   <!-- CTA Section -->
   <section class="cta-section">
     <div class="cta-content">
-      <h2>Ready to Stop<br><span class="faded">Losing Revenue?</span></h2>
-      <p>Join 200+ Parisian restaurants already using Donna to capture every international booking.</p>
+      <h2 data-translate="ctaTitle">Ready to Stop<br><span class="faded">Losing Revenue?</span></h2>
+      <p data-translate="ctaText">Join 200+ Parisian restaurants already using Donna to capture every international booking.</p>
       <div class="cta-buttons">
         <button class="btn-primary" style="padding:18px 32px;font-size:16px;">
           <span>▶</span>
-          Hear a Live Demo
+          <span data-translate="ctaBtnDemo">Hear a Live Demo</span>
         </button>
-        <button class="btn-secondary" style="padding:18px 32px;font-size:16px;">
+        <button class="btn-secondary" style="padding:18px 32px;font-size:16px;" data-translate="ctaBtnBook">
           Book a Demo Call
         </button>
       </div>
       <div class="cta-trust">
-        <span>🔒 GDPR Compliant</span>
-        <span>🇫🇷 Made for French Hospitality</span>
-        <span class="green-accent">● System Operational</span>
+        <span data-translate="ctaTrust1">🔒 GDPR Compliant</span>
+        <span data-translate="ctaTrust2">🇫🇷 Made for French Hospitality</span>
+        <span class="green-accent" data-translate="ctaTrust3">● System Operational</span>
       </div>
     </div>
   </section>
@@ -1318,42 +1353,330 @@
           <div class="footer-logo-icon">D</div>
           <span class="footer-logo-text">Le Donna</span>
         </div>
-        <p class="footer-desc">AI-powered voice assistant helping Parisian restaurants capture every international booking.</p>
+        <p class="footer-desc" data-translate="footerDesc">AI-powered voice assistant helping Parisian restaurants capture every international booking.</p>
       </div>
       <div>
-        <div class="footer-heading">Product</div>
+        <div class="footer-heading" data-translate="footerProduct">Product</div>
         <ul class="footer-links">
-          <li class="footer-link"><a href="#">Features</a></li>
-          <li class="footer-link"><a href="#">Pricing</a></li>
-          <li class="footer-link"><a href="#">Demo</a></li>
-          <li class="footer-link"><a href="#">Integrations</a></li>
+          <li class="footer-link"><a href="#" data-translate="footerFeatures">Features</a></li>
+          <li class="footer-link"><a href="#" data-translate="footerPricing">Pricing</a></li>
+          <li class="footer-link"><a href="#" data-translate="footerDemo">Demo</a></li>
+          <li class="footer-link"><a href="#" data-translate="footerIntegrations">Integrations</a></li>
         </ul>
       </div>
       <div>
-        <div class="footer-heading">Company</div>
+        <div class="footer-heading" data-translate="footerCompany">Company</div>
         <ul class="footer-links">
-          <li class="footer-link"><a href="#">About</a></li>
-          <li class="footer-link"><a href="#">Blog</a></li>
-          <li class="footer-link"><a href="#">Careers</a></li>
-          <li class="footer-link"><a href="#">Contact</a></li>
+          <li class="footer-link"><a href="#" data-translate="footerAbout">About</a></li>
+          <li class="footer-link"><a href="#" data-translate="footerBlog">Blog</a></li>
+          <li class="footer-link"><a href="#" data-translate="footerCareers">Careers</a></li>
+          <li class="footer-link"><a href="#" data-translate="footerContact">Contact</a></li>
         </ul>
       </div>
       <div>
-        <div class="footer-heading">Legal</div>
+        <div class="footer-heading" data-translate="footerLegal">Legal</div>
         <ul class="footer-links">
-          <li class="footer-link"><a href="#">Privacy</a></li>
-          <li class="footer-link"><a href="#">Terms</a></li>
-          <li class="footer-link"><a href="#">GDPR</a></li>
-          <li class="footer-link"><a href="#">Cookies</a></li>
+          <li class="footer-link"><a href="#" data-translate="footerPrivacy">Privacy</a></li>
+          <li class="footer-link"><a href="#" data-translate="footerTerms">Terms</a></li>
+          <li class="footer-link"><a href="#" data-translate="footerGDPR">GDPR</a></li>
+          <li class="footer-link"><a href="#" data-translate="footerCookies">Cookies</a></li>
         </ul>
       </div>
     </div>
-    <div class="footer-bottom">
+    <div class="footer-bottom" data-translate="footerCopyright">
       © 2025 Le Donna. All rights reserved. Made with ❤️ in Paris.
     </div>
   </footer>
 
   <script>
+    // Translations
+    const translations = {
+      en: {
+        // Navigation
+        navAudioProof: "Audio Proof",
+        navProblem: "Problem",
+        navMethodology: "Methodology",
+        navUseCases: "Use Cases",
+        navPricing: "Pricing",
+        navBookDemo: "Book Demo",
+
+        // Hero Section
+        heroStatus: "System Operational 24/7",
+        heroTitle1: "Stop Losing",
+        heroTitle2: "Revenue",
+        heroTitle3: "to Language",
+        heroTitle4: "Barriers",
+        heroSubtext: 'The AI receptionist that answers tourist calls in <strong style="color:#fff">30+ languages</strong>, books reservations 24/7, and syncs with your system. Sounds 100% human. <span class="green-accent" style="font-weight:600">Recovers €5,000+ monthly.</span>',
+        heroBtnDemo: "Hear a Live Demo",
+        heroBtnPricing: "View Pricing",
+        heroStat1: "95%",
+        heroStat1Label: "Call Completion",
+        heroStat2: "30+",
+        heroStat2Label: "Languages",
+        heroStat3: "€8k",
+        heroStat3Label: "Avg. Monthly Recovery",
+
+        // Phone Mockup
+        activeCall: "Active Call",
+        callMessage1: '"Hi, I\'d like to book a table for 4 tomorrow evening, around 8pm? We\'re visiting from London."',
+        callMessage2: '"Perfect! I have a lovely table available at 8pm tomorrow. May I have your name for the reservation?"',
+        bookingConfirmed: "Booking Confirmed",
+        sentimentLabel: "Sentiment Analysis",
+        sentimentValue: "Positive (98%)",
+        scrollText: "Scroll",
+
+        // Problem Section
+        problemTitle: 'The <span class="faded">Language Gap</span> Problem',
+        problemSubtext: "38 million tourists visit Paris annually. When they call in English, what happens at your restaurant?",
+        stat1Value: "40%",
+        stat1Label: "of tourist calls abandoned",
+        stat1Sub: "Staff can't communicate",
+        stat2Value: "€85",
+        stat2Label: "average tourist dinner spend",
+        stat2Sub: "Per person in Paris",
+        stat3Value: "€5,000+",
+        stat3Label: "lost revenue monthly",
+        stat3Sub: "From missed international bookings",
+
+        // Features Section
+        featuresTitle: 'How <span class="green-accent">Donna</span> Works',
+        featuresSubtext: "Your 24/7 multilingual maître d' who never takes a day off",
+        feature1Title: "30+ Languages",
+        feature1Desc: "English, Spanish, German, Mandarin, Japanese, and more",
+        feature2Title: "24/7 Availability",
+        feature2Desc: "Never miss a call, day or night, holidays included",
+        feature3Title: "Instant Booking",
+        feature3Desc: "Syncs directly with TheFork, Zenchef, or your system",
+        feature4Title: "100% Human Voice",
+        feature4Desc: "Callers can't tell they're talking to AI",
+        feature5Title: "Sentiment Analysis",
+        feature5Desc: "Track caller satisfaction in real-time",
+        feature6Title: "48h Setup",
+        feature6Desc: "Go live in two days, not two months",
+
+        // Process Section
+        processTitle: 'Simple <span class="faded">4-Step</span> Process',
+        process1Title: "The Phone Rings",
+        process1Desc: "A British tourist calls your restaurant while you're prepping for dinner service.",
+        process2Title: "Donna Answers",
+        process2Desc: "In perfect English, she greets them warmly with your restaurant's name and personality.",
+        process3Title: "She Handles Everything",
+        process3Desc: "Takes reservations, answers menu questions, confirms dietary needs, provides directions.",
+        process4Title: "You Get the Booking",
+        process4Desc: "The reservation syncs to your system. The guest arrives. You make money.",
+
+        // Testimonials Section
+        testimonialTitle: 'Trusted by <span class="green-accent">200+</span> Paris Restaurants',
+
+        // Pricing Section
+        pricingTitle: 'Simple <span class="faded">Pricing</span>',
+        pricingSubtext: "Donna pays for herself with just 3-4 extra reservations per week",
+        pricingStarter: "Starter",
+        pricingStarterDesc: "For local businesses",
+        pricingGrowth: "Growth",
+        pricingGrowthDesc: "For scaling teams",
+        pricingEnterprise: "Enterprise",
+        pricingEnterpriseDesc: "For organizations",
+        pricingBadge: "Best Value",
+        pricingFeature1: "AI Minutes",
+        pricingFeature2: "Standard Voice",
+        pricingFeature3: "Email Analytics",
+        pricingFeature4: "Custom Workflows",
+        pricingFeature5: "CRM Integration",
+        pricingFeature6: "24/7 Support",
+        pricingFeature7: "Unlimited Volume",
+        pricingFeature8: "Dedicated Instance",
+        pricingFeature9: "SLA Guarantees",
+        pricingFeature10: "API Access",
+        pricingBtn: "Book Onboarding Call",
+        pricingBtnContact: "Contact Sales",
+        pricingNote: "All plans include 14-day free trial • No credit card required • Cancel anytime",
+
+        // CTA Section
+        ctaTitle: 'Ready to Stop<br><span class="faded">Losing Revenue?</span>',
+        ctaText: "Join 200+ Parisian restaurants already using Donna to capture every international booking.",
+        ctaBtnDemo: "Hear a Live Demo",
+        ctaBtnBook: "Book a Demo Call",
+        ctaTrust1: "🔒 GDPR Compliant",
+        ctaTrust2: "🇫🇷 Made for French Hospitality",
+        ctaTrust3: "● System Operational",
+
+        // Footer
+        footerDesc: "AI-powered voice assistant helping Parisian restaurants capture every international booking.",
+        footerProduct: "Product",
+        footerFeatures: "Features",
+        footerPricing: "Pricing",
+        footerDemo: "Demo",
+        footerIntegrations: "Integrations",
+        footerCompany: "Company",
+        footerAbout: "About",
+        footerBlog: "Blog",
+        footerCareers: "Careers",
+        footerContact: "Contact",
+        footerLegal: "Legal",
+        footerPrivacy: "Privacy",
+        footerTerms: "Terms",
+        footerGDPR: "GDPR",
+        footerCookies: "Cookies",
+        footerCopyright: "© 2025 Le Donna. All rights reserved. Made with ❤️ in Paris."
+      },
+      fr: {
+        // Navigation
+        navAudioProof: "Preuve Audio",
+        navProblem: "Problème",
+        navMethodology: "Méthodologie",
+        navUseCases: "Cas d'Usage",
+        navPricing: "Tarifs",
+        navBookDemo: "Réserver une Démo",
+
+        // Hero Section
+        heroStatus: "Système Opérationnel 24h/24 et 7j/7",
+        heroTitle1: "Arrêtez de Perdre",
+        heroTitle2: "du Chiffre",
+        heroTitle3: "à cause des Barrières",
+        heroTitle4: "Linguistiques",
+        heroSubtext: 'La réceptionniste IA qui répond aux appels touristiques en <strong style="color:#fff">plus de 30 langues</strong>, réserve 24h/24 et 7j/7, et se synchronise avec votre système. Sonne 100% humain. <span class="green-accent" style="font-weight:600">Récupère plus de 5 000€ par mois.</span>',
+        heroBtnDemo: "Écouter une Démo",
+        heroBtnPricing: "Voir les Tarifs",
+        heroStat1: "95%",
+        heroStat1Label: "Appels Complétés",
+        heroStat2: "30+",
+        heroStat2Label: "Langues",
+        heroStat3: "€8k",
+        heroStat3Label: "Récupération Moyenne Mensuelle",
+
+        // Phone Mockup
+        activeCall: "Appel en Cours",
+        callMessage1: '"Bonjour, je voudrais réserver une table pour 4 demain soir, vers 20h ? Nous visitons depuis Londres."',
+        callMessage2: '"Parfait ! J\'ai une belle table disponible à 20h demain. Puis-je avoir votre nom pour la réservation ?"',
+        bookingConfirmed: "Réservation Confirmée",
+        sentimentLabel: "Analyse de Sentiment",
+        sentimentValue: "Positif (98%)",
+        scrollText: "Défiler",
+
+        // Problem Section
+        problemTitle: 'Le Problème de <span class="faded">l\'Écart Linguistique</span>',
+        problemSubtext: "38 millions de touristes visitent Paris chaque année. Quand ils appellent en anglais, que se passe-t-il dans votre restaurant ?",
+        stat1Value: "40%",
+        stat1Label: "des appels touristiques abandonnés",
+        stat1Sub: "Le personnel ne peut pas communiquer",
+        stat2Value: "€85",
+        stat2Label: "dépense moyenne par touriste",
+        stat2Sub: "Par personne à Paris",
+        stat3Value: "€5 000+",
+        stat3Label: "revenus perdus mensuellement",
+        stat3Sub: "Des réservations internationales manquées",
+
+        // Features Section
+        featuresTitle: 'Comment <span class="green-accent">Donna</span> Fonctionne',
+        featuresSubtext: "Votre maître d'hôtel multilingue 24h/24 et 7j/7 qui ne prend jamais de jour de congé",
+        feature1Title: "Plus de 30 Langues",
+        feature1Desc: "Anglais, espagnol, allemand, mandarin, japonais et plus",
+        feature2Title: "Disponibilité 24h/24 et 7j/7",
+        feature2Desc: "Ne manquez jamais un appel, jour ou nuit, jours fériés inclus",
+        feature3Title: "Réservation Instantanée",
+        feature3Desc: "Se synchronise directement avec TheFork, Zenchef ou votre système",
+        feature4Title: "Voix 100% Humaine",
+        feature4Desc: "Les appelants ne peuvent pas dire qu'ils parlent à une IA",
+        feature5Title: "Analyse de Sentiment",
+        feature5Desc: "Suivez la satisfaction des appelants en temps réel",
+        feature6Title: "Configuration en 48h",
+        feature6Desc: "En ligne en deux jours, pas deux mois",
+
+        // Process Section
+        processTitle: 'Processus Simple <span class="faded">en 4 Étapes</span>',
+        process1Title: "Le Téléphone Sonne",
+        process1Desc: "Un touriste britannique appelle votre restaurant pendant que vous préparez le service du dîner.",
+        process2Title: "Donna Répond",
+        process2Desc: "En anglais parfait, elle les accueille chaleureusement avec le nom et la personnalité de votre restaurant.",
+        process3Title: "Elle Gère Tout",
+        process3Desc: "Prend les réservations, répond aux questions sur le menu, confirme les besoins diététiques, donne des directions.",
+        process4Title: "Vous Obtenez la Réservation",
+        process4Desc: "La réservation se synchronise avec votre système. Le client arrive. Vous gagnez de l'argent.",
+
+        // Testimonials Section
+        testimonialTitle: 'La Confiance de <span class="green-accent">Plus de 200</span> Restaurants Parisiens',
+
+        // Pricing Section
+        pricingTitle: 'Tarification <span class="faded">Simple</span>',
+        pricingSubtext: "Donna se rentabilise avec seulement 3 à 4 réservations supplémentaires par semaine",
+        pricingStarter: "Démarrage",
+        pricingStarterDesc: "Pour les entreprises locales",
+        pricingGrowth: "Croissance",
+        pricingGrowthDesc: "Pour les équipes en expansion",
+        pricingEnterprise: "Entreprise",
+        pricingEnterpriseDesc: "Pour les organisations",
+        pricingBadge: "Meilleur Rapport Qualité-Prix",
+        pricingFeature1: "Minutes IA",
+        pricingFeature2: "Voix Standard",
+        pricingFeature3: "Analytiques Email",
+        pricingFeature4: "Workflows Personnalisés",
+        pricingFeature5: "Intégration CRM",
+        pricingFeature6: "Support 24h/24 et 7j/7",
+        pricingFeature7: "Volume Illimité",
+        pricingFeature8: "Instance Dédiée",
+        pricingFeature9: "Garanties SLA",
+        pricingFeature10: "Accès API",
+        pricingBtn: "Réserver un Appel d'Intégration",
+        pricingBtnContact: "Contacter les Ventes",
+        pricingNote: "Tous les forfaits incluent un essai gratuit de 14 jours • Aucune carte de crédit requise • Annulation à tout moment",
+
+        // CTA Section
+        ctaTitle: 'Prêt à Arrêter<br><span class="faded">de Perdre du Chiffre ?</span>',
+        ctaText: "Rejoignez plus de 200 restaurants parisiens qui utilisent déjà Donna pour capturer chaque réservation internationale.",
+        ctaBtnDemo: "Écouter une Démo",
+        ctaBtnBook: "Réserver une Démo",
+        ctaTrust1: "🔒 Conforme RGPD",
+        ctaTrust2: "🇫🇷 Conçu pour l'Hôtellerie Française",
+        ctaTrust3: "● Système Opérationnel",
+
+        // Footer
+        footerDesc: "Assistant vocal alimenté par l'IA aidant les restaurants parisiens à capturer chaque réservation internationale.",
+        footerProduct: "Produit",
+        footerFeatures: "Fonctionnalités",
+        footerPricing: "Tarifs",
+        footerDemo: "Démo",
+        footerIntegrations: "Intégrations",
+        footerCompany: "Entreprise",
+        footerAbout: "À Propos",
+        footerBlog: "Blog",
+        footerCareers: "Carrières",
+        footerContact: "Contact",
+        footerLegal: "Légal",
+        footerPrivacy: "Confidentialité",
+        footerTerms: "Conditions",
+        footerGDPR: "RGPD",
+        footerCookies: "Cookies",
+        footerCopyright: "© 2025 Le Donna. Tous droits réservés. Fait avec ❤️ à Paris."
+      }
+    };
+
+    // Current language (default: English)
+    let currentLang = localStorage.getItem('language') || 'en';
+
+    // Set language function
+    function setLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem('language', lang);
+
+      // Update button states
+      document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+      document.getElementById('lang-fr').classList.toggle('active', lang === 'fr');
+
+      // Update all translatable elements
+      document.querySelectorAll('[data-translate]').forEach(element => {
+        const key = element.getAttribute('data-translate');
+        if (translations[lang][key]) {
+          element.innerHTML = translations[lang][key];
+        }
+      });
+    }
+
+    // Initialize language on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      setLanguage(currentLang);
+    });
+
     // Timer
     let seconds = 42;
     setInterval(() => {
